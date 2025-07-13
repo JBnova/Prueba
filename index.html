@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos Selecciones</title>
+    <link rel="stylesheet" href="../styles/stylesEQ.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <div class="contenedor-equipo"> 
+        <div class="polera-contenedor swiper-container">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide" data-slide-index="0">
+                    <img src="../img/alianza/casaca alianza - azulino.png" alt="Casaca Alianza Lima Azulino" class="imagen-polera">
+                    <div class="zona-arrastrable">
+                        <div id="nombreUno_slide0" class="texto-manga">NOMBRE</div>
+                    </div>
+                    <div class="zona-arrastrableDos">
+                        <div id="nombreDos_slide0" class="texto-bolsillo">TEXTO</div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide" data-slide-index="1">
+                    <img src="../img/alianza/casaca alianza - azulino 02.png" alt="Casaca Deportiva Roja" class="imagen-polera">
+                    <div class="zona-arrastrable">
+                        <div id="nombreUno_slide1" class="texto-manga">EQUIPO</div>
+                    </div>
+                    <div class="zona-arrastrableDos">
+                        <div id="nombreDos_slide1" class="texto-bolsillo">CIUDAD</div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide" data-slide-index="2">
+                    <img src="../img/alianza/casaca alianza - azulino 03.png" alt="Casaca Deportiva Azul" class="imagen-polera">
+                    <div class="zona-arrastrable">
+                        <div id="nombreUno_slide2" class="texto-manga">MARCA</div>
+                    </div>
+                    <div class="zona-arrastrableDos">
+                        <div id="nombreDos_slide2" class="texto-bolsillo">AÑO</div>
+                    </div>
+                </div>
+
+                </div>
+
+            <div class="swiper-pagination"></div> <div class="swiper-button-prev"></div> <div class="swiper-button-next"></div> <div class="swiper-scrollbar"></div>   </div>
+
+        <div class="formulario">
+            <h3>Personalizar Casaca</h3>
+
+            <label for="inputNombreUno" class="etiqueta-fuente">ELIGE TU TIPO DE LETRA (Manga)</label>
+            <select id="selectFuenteUno" class="select-fuente" onchange="cambiarFuente('nombreUno', this.value)">
+                <option value="Arial">Arial</option> <option value="'Segoe Print'">Segoe Print</option>
+                <option value="'Impact'">Impact</option>
+                <option value="'Gloomy Things'">Gloomy Things</option>
+                <option value="'Back to Black'">Back to Black</option>
+                <option value="'VarsityTeam'">VarsityTeam</option>
+                <option value="'CCUpUpAndAway'">CCUpUpAndAway</option>
+                <option value="'FORTE'">FORTE</option>
+            </select>
+            <label class="etiqueta-fuente" for="inputNombreUno">TEXTO UNO (Manga):</label>
+            <small id="contadorLetrasUno">0 /25</small>
+            <input type="text" id="inputNombreUno" placeholder="...." oninput="actualizarNombreUno()" maxlength="25">
+            <label class="etiqueta-fuente" for="inputTamanoUno">TAMAÑO LETRA (Manga):</label>
+            <input type="range" id="inputTamanoUno" min="10" max="60" value="25" oninput="cambiarTamano('nombreUno', this.value)">
+            
+            <p>=========================</p>
+
+            <label for="inputNombreDos" class="etiqueta-fuente">ELIGE TU TIPO DE LETRA (Bolsillo)</label>
+            <select id="selectFuenteDos" class="select-fuente" onchange="cambiarFuente('nombreDos', this.value)">
+                <option value="Arial">Arial</option> <option value="'Segoe Print'">Segoe Print</option>
+                <option value="'Impact'">Impact</option>
+                <option value="'Gloomy Things'">Gloomy Things</option>
+                <option value="'Back to Black'">Back to Black</option>
+                <option value="'VarsityTeam'">VarsityTeam</option>
+                <option value="'CCUpUpAndAway'">CCUpUpAndAway</option>
+                <option value="'FORTE'">FORTE</option>
+            </select>
+            <label class="etiqueta-fuente" for="inputNombreDos">TEXTO DOS (Bolsillo):</label>
+            <small id="contadorLetrasDos">0 /25</small>
+            <input type="text" id="inputNombreDos" placeholder="...." oninput="actualizarNombreDos()" maxlength="25">
+            <label class="etiqueta-fuente" for="inputTamanoDos">TAMAÑO LETRA (Bolsillo):</label>
+            <input type="range" id="inputTamanoDos" min="10" max="60" value="25" oninput="cambiarTamano('nombreDos', this.value)">
+            
+            <button onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
+            <a href="menu.html"><button>Regresar al Menú</button></a>
+        </div>
+    </div>
+
+    <script src="../js/script_EQ.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+</html>
