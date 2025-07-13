@@ -1,0 +1,352 @@
+/* ========================================================
+   [1] ESTILOS GENERALES
+======================================================== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor-equipo {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ========================================================
+   [2] POLERA / CONTENEDOR DE IMAGEN -swiper-
+======================================================== */
+.polera-contenedor {
+  position: relative; /* Es crucial para el posicionamiento absoluto dentro de los slides */
+  width: 700px; /* Tamaño del carrusel */
+  height: 700px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden; /* Mantiene los contenidos del carrusel dentro de los límites */
+  background-color: white;
+  max-width: 90vw;
+  max-height: 90vw;
+  aspect-ratio: 1 / 1;
+  /* Swiper añade la clase .swiper-container automáticamente */
+  
+}
+
+/* Estilos para los slides individuales de Swiper */
+.swiper-slide {
+  width: 100%; /* Cada slide ocupa el 100% del contenedor */
+  height: 100%;
+  /* Haz que el slide sea un contexto de posicionamiento para las zonas arrastrables */
+  position: relative; 
+  /* Centrar la imagen dentro del slide */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* La imagen dentro de cada slide */
+.imagen-polera {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ajusta la imagen sin recortarla */
+}
+
+/* Tus zonas arrastrables no necesitan grandes cambios, ya que su posicionamiento
+   ahora es relativo al .swiper-slide (que tiene position: relative) */
+   .zona-arrastrable,
+   .zona-arrastrableDos {
+       position: absolute; /* Esto las posiciona respecto a .swiper-slide */
+       /* ... tus otras propiedades de tamaño y posición porcentual ... */
+   }
+
+   .swiper-button-prev,
+.swiper-button-next {
+    color: #333; /* Color de las flechas de navegación */
+    --swiper-navigation-size: 30px; /* Tamaño de las flechas (variable de Swiper) */
+}
+.swiper-pagination-bullet {
+  background: #ccc; /* Color de los puntos de paginación inactivos */
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #333; /* Color del punto de paginación activo */
+}
+.imagen-polera {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ========================================================
+   [3] TEXTO EN LA PARTE INFERIOR (FIJO)
+======================================================== */
+.texto-nombre {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-30%);
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* ========================================================
+   [4] FORMULARIO
+======================================================== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 6px;
+}
+
+.formulario input,
+.formulario button {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.formulario button {
+  background-color: #329c59bb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background-color: #128C7E;
+}
+
+/* ========================================================
+   [5] ZONA 1 - TEXTO EN LA MANGA (ARRASTRABLE)
+======================================================== */
+.zona-arrastrable {
+  position: absolute;
+  /* Usa porcentajes relativos al polera-contenedor */
+  top: 40%; /* Ajusta estos valores porcentuales para posicionar */
+  left: 8.5%; /* Ajusta estos valores porcentuales para posicionar */
+  width: 8%; /* Ancho relativo al polera-contenedor */
+  height: 38%; /* Alto relativo al polera-contenedor */
+  overflow: hidden;
+  /* Agrega un background temporal para visualizar las zonas en desarrollo */
+  /*background-color: rgba(255, 0, 0, 0.3);*/
+  z-index: 10;
+}
+
+.texto-manga {
+  position: absolute; /* Sigue siendo absoluto respecto a .zona-arrastrable */
+  top: 0;
+  left: 0;
+  cursor: move;
+  font-size: 2.5vw; /* Usa vw para que el tamaño de la fuente se ajuste con el viewport */
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  padding: 0.5vw 1vw; /* Padding relativo */
+  border-radius: 1px;
+  user-select: none;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+  text-align: center;
+  transform: rotate(-90deg) translate(-100%, 0);
+  transform-origin: left top;
+  width: max-content; /* Permite que el texto se estire si es necesario */
+  max-width: none;
+}
+
+/* ========================================================
+ [6] ZONA 2 - TEXTO EN EL BOLSILLO (ARRASTRABLE)
+======================================================== */
+.zona-arrastrableDos {
+  position: absolute;
+  /* Usa porcentajes relativos al polera-contenedor */
+  top: 39%; /* Ajusta estos valores porcentuales */
+  left: 16%; /* Ajusta estos valores porcentuales */
+  width: 12%; /* Ancho relativo */
+  height: 40%; /* Alto relativo */
+  overflow: hidden;
+  /*background-color: rgba(0, 255, 0, 0.3); /* Temporal: verde semi-transparente */
+  z-index: 10; /* Asegura que esté por encima de otros elementos si hay conflicto */
+}
+
+.texto-bolsillo {
+  /* Controla el posicionamiento libre del elemento respecto a su padre posicionado. */
+  position: absolute;
+  /* Distancia desde el borde superior de su contenedor. */
+  top: 0;
+  /* Distancia desde el borde izquierdo de su contenedor. */
+  left: 0;
+  /* Convierte el elemento en un contenedor flexible. */
+  display: flex;
+  /* Organiza los elementos hijos en una columna vertical. */
+  flex-direction: column;
+  /* Alinea los hijos al inicio del eje principal (vertical). */
+  justify-content: flex-start;
+  /* Centra los hijos en el eje transversal (horizontal). */
+  align-items: center;
+  /* Tamaño del texto, el 2.5% del ancho del navegador (responsivo). */
+  font-size: 2.5vw;
+  /* Grosor del texto (negrita). */
+  font-weight: bold;
+  /* Color del texto. */
+  color: white;
+  /* Alineación horizontal del texto dentro del elemento. */
+  text-align: center;
+  /* Espacio interno alrededor del contenido. */
+  padding: 0;
+  /* Incluye el padding y el borde en el tamaño total del elemento. */
+  box-sizing: border-box;
+  /* Permite que las palabras largas se rompan para caber en la línea. */
+  overflow-wrap: break-word;
+  /* (Redundante, similar a overflow-wrap). */
+  word-break: break-word;
+  /* Cómo se manejan los espacios en blanco y saltos de línea. */
+  white-space: normal;
+  /* Evita que el usuario seleccione el texto. */
+  user-select: none;
+  /* Cambia el cursor para indicar que el elemento es arrastrable. */
+  cursor: move;
+  /* Añade barra de desplazamiento vertical si el contenido excede el alto. */
+  overflow-y: auto;
+  /* Límite de altura máxima del elemento, el 100% de su contenedor. */
+  max-height: 100%;
+  /* Orden de apilamiento en caso de superposición con otros elementos. */
+  z-index: 11;
+}
+/* ========================================================
+   [7] FUENTES PERSONALIZADAS
+======================================================== */
+@font-face {
+  font-family: 'Segoe Print';
+  src: url('../fonts/segoepr.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Impact';
+  src: url('../fonts/impact.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gloomy Things';
+  src: url('../fonts/Gloomy Things.otf') format('opentype'); /* CAMBIADO: 'truetype' a 'opentype' */
+}
+@font-face {
+  font-family: 'Back to Black';
+  src: url('../fonts/Back to Black Demo.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'VarsityTeam';
+  src: url('../fonts/VarsityTeam-Bold.otf') format('opentype'); /* CAMBIADO: 'truetype' a 'opentype' */
+}
+@font-face {
+  font-family: 'CCUpUpAndAway';
+  src: url('../fonts/CCUpUpAndAway.otf') format('opentype'); /* CAMBIADO: 'truetype' a 'opentype' */
+}
+@font-face {
+  font-family: 'FORTE';
+  src: url('../fonts/FORTE.TTF') format('truetype');
+}
+
+
+
+/* ========================================================
+   [8] SELECTOR DE FUENTES
+======================================================== */
+.etiqueta-fuente {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+.select-fuente {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 2px solid #999;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #222;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='70,100 110,40 30,40' fill='%23666'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  margin-bottom: 8px; /* ✅ Añadido para separación del siguiente input */
+}
+
+.select-fuente:focus {
+  border-color: #555;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.select-fuente option {
+  font-size: 16px;
+  padding: 6px;
+}
+
+/* ========================================================
+   [9] RESPONSIVE DESIGN
+======================================================== */
+@media (max-width: 768px) {
+  .contenedor-equipo {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .polera-contenedor {
+    width: 90%; /* Usa porcentajes para que se ajuste al padre */
+    height: auto; /* Permite que el alto se ajuste con el aspecto */
+    max-width: 400px; /* Un límite máximo para evitar que sea demasiado grande en tablets */
+}
+
+  .formulario {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .formulario input,
+  .formulario button,
+  .select-fuente {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+
+  .texto-nombre {
+    font-size: 16px;
+    padding: 4px 10px;
+  }
+
+  .texto-manga,
+  .texto-bolsillo {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .polera-contenedor {
+    max-width: 300px;
+  }
+
+  .formulario {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .select-fuente {
+    font-size: 14px;
+  }
+}
